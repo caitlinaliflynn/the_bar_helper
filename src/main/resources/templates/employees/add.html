@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<div th:replace="fragments :: head"></div>
+<head>
+    <style>
+        .button1:hover {
+        background-color: #41B3A3;
+        color: black;
+        }
+    </style>
+</head>
+<body>
+<header th:replace="fragments :: header"></header>
+    <form action="/employees/add" method="POST">
+        <div>
+            <label>First Name:
+                <input th:field="${employees.employeeFirstName}" />
+            </label>
+            <p class="error" th:errors="${employees.employeeFirstName}"></p>
+        </div>
+        <div>
+            <label>Last Name:
+                <input th:field="${employees.employeeLastName}" />
+            </label>
+            <p class="error" th:errors="${employees.employeeLastName}"></p>
+        </div>
+        <div>
+            <label>Date Of Birth:
+                <input type="date" id="dateOfBirth" name="dateOfBirth">
+            </label>
+        </div>
+        <div>
+            <label>Position:
+                <select th:field="${employees.employeePosition}">
+                    <option th:each="employee : ${positionType}"
+                            th:value="${employee}"
+                            th:text="${employee.positionDisplayName}"
+                    ></option>
+                </select>
+            </label>
+        </div>
+        <button class="button button1" style="border-radius: 30px;" type="submit">Add New Employee</button>
+    </form>
+    </br>
+    <p><a href="/employees/delete">Remove Employee</a></p>
+    <p><a href="/employees/list">Employee List</a></p>
+    <p><a href="/">Home</a></p>
+</body>
+</html>

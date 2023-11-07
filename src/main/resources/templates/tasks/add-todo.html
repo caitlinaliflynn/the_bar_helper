@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<div th:replace="fragments :: head"></div>
+<head>
+    <style>
+        .button1:hover {
+        background-color: #41B3A3;
+        color: black;
+        }
+    </style>
+</head>
+<body>
+<header th:replace="fragments :: header"></header>
+    <form action="/tasks/todo/add" method="POST">
+        <div>
+            <label>Type:
+                <select th:field="${todoTasks.todoTaskType}">
+                    <option th:each="type : ${todoTaskTypes}"
+                            th:value="${type}"
+                            th:text="${type.taskTypeDisplayName}"
+                    ></option>
+                </select>
+            </label>
+        </div>
+        <div>
+            <label>Task:
+                <input th:field="${todoTasks.todoTaskName}" />
+            </label>
+            <p class="error" th:errors="${todoTasks.todoTaskName}"></p>
+        </div>
+        <div>
+            <label>Notes:
+                <textarea th:field="${todoTasks.todoTaskNotes}" />
+            </label>
+            <p class="error" th:errors="${todoTasks.todoTaskNotes}"></p>
+        </div>
+        <div>
+            <label>Desired Completion Date:
+                <input type="date" id="desiredCompletionDate" name="desiredCompletionDate">
+            </label>
+        </div>
+        <button class="button button1" style="border-radius: 30px;" type="submit">Add New To Do Task</button>
+    </form>
+    </br>
+    <p><a href="/tasks/todo/delete">Remove To Do Task</a></p>
+    <p><a href="/tasks/todo/list">To Do Task List</a></p>
+    <p><a href="/tasks">Task Manager</a></p>
+    <p><a href="/">Home</a></p>
+</body>
+</html>
