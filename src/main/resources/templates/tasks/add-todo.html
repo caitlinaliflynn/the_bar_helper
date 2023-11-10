@@ -14,7 +14,7 @@
     <form action="/tasks/todo/add" method="POST">
         <div>
             <label>Type:
-                <select th:field="${todoTasks.todoTaskType}">
+                <select th:field="${todoTasks.type}">
                     <option th:each="type : ${todoTaskTypes}"
                             th:value="${type}"
                             th:text="${type.taskTypeDisplayName}"
@@ -24,15 +24,15 @@
         </div>
         <div>
             <label>Task:
-                <input th:field="${todoTasks.todoTaskName}" />
+                <input th:field="${todoTasks.name}" />
             </label>
-            <p class="error" th:errors="${todoTasks.todoTaskName}"></p>
+            <p class="error" th:errors="${todoTasks.name}"></p>
         </div>
         <div>
             <label>Notes:
-                <textarea th:field="${todoTasks.todoTaskNotes}" />
+                <textarea th:field="${todoTasks.notes}" />
             </label>
-            <p class="error" th:errors="${todoTasks.todoTaskNotes}"></p>
+            <p class="error" th:errors="${todoTasks.notes}"></p>
         </div>
         <div>
             <label>Desired Completion Date:

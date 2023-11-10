@@ -45,7 +45,8 @@
         <tr>
             <th>Type
                 <select id="todo-type-list" onchange="sortByTodoTaskType()" class='form-control'>
-                    <option value="">All</option>                    <option>Cleaning</option>
+                    <option value="">All</option>
+                    <option>Cleaning</option>
                     <option>Stocking</option>
                     <option>Rotating</option>
                     <option>Ordering</option>
@@ -59,10 +60,10 @@
         </thead>
         <tbody>
         <tr th:each="task : ${todoTasksList}">
-            <td th:text="${task.todoTaskType.taskTypeDisplayName}" />
-            <td th:text="${task.todoTaskName}" />
-            <td th:text="${task.todoTaskNotes}" />
-            <td th:text="${task.desiredCompletionDate}" />
+            <td th:text="${task.type.taskTypeDisplayName}" />
+            <td th:text="${task.name}" />
+            <td th:text="${task.notes}" />
+            <td th:text="${task.date}" />
         </tr>
         </tbody>
     </table>
