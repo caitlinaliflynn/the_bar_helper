@@ -41,9 +41,9 @@
         </div>
         <div>
             <label>Employee Completed By:
-                <select>
+                <select name="employeeNames">
                     <option th:each="employee : ${employeesRepository}"
-                            th:value="${employee}"
+                            th:value="${employee.employeeFirstName + ' ' + employee.employeeLastName}"
                             th:text="${employee.employeeFirstName + ' ' + employee.employeeLastName}"
                     ></option>
                 </select>
@@ -53,7 +53,7 @@
     </form>
     </br>
     <p><a href="/tasks/completed/delete">Remove Completed Task</a></p>
-    <p><a href="/tasks/completed/list">Completed Task List</a></p>
+    <p><a href="/tasks/completed/list">Completed Tasks</a></p>
     <p><a href="/tasks">Task Manager</a></p>
     <p><a href="/">Home</a></p>
 </body>

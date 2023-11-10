@@ -19,6 +19,7 @@ public class TodoTasks {
     private String todoTaskName;
     @Size(min = 0, max = 100, message = "Notes must be 100 characters or less.")
     private String todoTaskNotes;
+    @NotBlank
     private String desiredCompletionDate;
     private TaskType todoTaskType;
 

@@ -30,7 +30,7 @@ public class TodoTasksController {
         if (errors.hasErrors()) {
             model.addAttribute("todoTasks", todoTasks);
             model.addAttribute("errors", errors);
-            return "tasks/add-todo";
+            return "redirect:add";
         } else {
             todoTasksRepository.save(todoTasks);
         }
@@ -39,14 +39,14 @@ public class TodoTasksController {
 
     @GetMapping("list")
     public String displayListToDoTasksPage(Model model) {
-        model.addAttribute("title", "To Do Task List");
+        model.addAttribute("title", "To Do Tasks");
         model.addAttribute("todoTasksList", todoTasksRepository.findAll());
         return "tasks/list-todo";
     }
 
     @GetMapping("delete")
     public String displayDeleteToDoTasksPage(Model model) {
-        model.addAttribute("title", "Delete Todo Task");
+        model.addAttribute("title", "Remove Todo Task");
         model.addAttribute("todoTasksList", todoTasksRepository.findAll());
         return "tasks/delete-todo";
     }

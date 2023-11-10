@@ -112,6 +112,8 @@
                     table.querySelector(`th:nth-child(${ column + 1})`).classList.toggle("th-sort-desc", !asc);
                 }
 
+                sortByTodoDate(document.querySelector("table"), 3, true);
+
                 document.querySelectorAll(".table-sortable th").forEach(headerCell => {
                     headerCell.addEventListener("click", () => {
                         const tableElement = headerCell.closest('table');

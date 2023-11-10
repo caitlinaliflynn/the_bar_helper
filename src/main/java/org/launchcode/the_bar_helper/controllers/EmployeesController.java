@@ -45,7 +45,7 @@ public class EmployeesController {
 
     @GetMapping("delete")
     public String displayDeleteEmployeePage(Model model) {
-        model.addAttribute("title", "Delete Employee");
+        model.addAttribute("title", "Remove Employee");
         model.addAttribute("employeeList", employeesRepository.findAll());
         return "employees/delete";
     }

@@ -19,20 +19,23 @@ public class CompletedTasks {
     private String completedTaskName;
     @Size(min = 0, max = 100, message = "Notes must be 100 characters or less.")
     private String completedTaskNotes;
+    @NotBlank(message = "Date completed is required.")
     private String dateCompleted;
-
     private TaskType completedTaskType;
+
+    private String employeeNames;
 
     public CompletedTasks() {
 
     }
 
-    public CompletedTasks(int completedTaskId, String completedTaskName, String completedTaskNotes, String dateCompleted, TaskType completedTaskType) {
+    public CompletedTasks(int completedTaskId, String completedTaskName, String completedTaskNotes, String dateCompleted, TaskType completedTaskType, String employeeNames) {
         this.completedTaskId = completedTaskId;
         this.completedTaskName = completedTaskName;
         this.completedTaskNotes = completedTaskNotes;
         this.dateCompleted = dateCompleted;
         this.completedTaskType = completedTaskType;
+        this.employeeNames = employeeNames;
     }
 
     public int getCompletedTaskId() {
@@ -75,6 +78,14 @@ public class CompletedTasks {
         this.completedTaskType = completedTaskType;
     }
 
+    public String getEmployeeNames() {
+        return employeeNames;
+    }
+
+    public void setEmployeeNames(String employeeNames) {
+        this.employeeNames = employeeNames;
+    }
+
     @Override
     public String toString() {
         return "CompletedTasks{" +
@@ -83,6 +94,7 @@ public class CompletedTasks {
                 ", completedTaskNotes='" + completedTaskNotes + '\'' +
                 ", dateCompleted='" + dateCompleted + '\'' +
                 ", completedTaskType=" + completedTaskType +
+                ", employeeNames='" + employeeNames + '\'' +
                 '}';
     }
 
@@ -90,11 +102,11 @@ public class CompletedTasks {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof CompletedTasks that)) return false;
-        return getCompletedTaskId() == that.getCompletedTaskId() && Objects.equals(getCompletedTaskName(), that.getCompletedTaskName()) && Objects.equals(getCompletedTaskNotes(), that.getCompletedTaskNotes()) && Objects.equals(getDateCompleted(), that.getDateCompleted()) && getCompletedTaskType() == that.getCompletedTaskType();
+        return getCompletedTaskId() == that.getCompletedTaskId() && Objects.equals(getCompletedTaskName(), that.getCompletedTaskName()) && Objects.equals(getCompletedTaskNotes(), that.getCompletedTaskNotes()) && Objects.equals(getDateCompleted(), that.getDateCompleted()) && getCompletedTaskType() == that.getCompletedTaskType() && Objects.equals(getEmployeeNames(), that.getEmployeeNames());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getCompletedTaskId(), getCompletedTaskName(), getCompletedTaskNotes(), getDateCompleted(), getCompletedTaskType());
+        return Objects.hash(getCompletedTaskId(), getCompletedTaskName(), getCompletedTaskNotes(), getDateCompleted(), getCompletedTaskType(), getEmployeeNames());
     }
 }
