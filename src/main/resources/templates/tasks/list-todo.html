@@ -60,7 +60,7 @@
         </thead>
         <tbody>
         <tr th:each="task : ${todoTasksList}">
-            <td th:text="${task.type.taskTypeDisplayName}" />
+            <td th:text="${task.todoTaskType.taskTypeDisplayName}" />
             <td th:text="${task.name}" />
             <td th:text="${task.notes}" />
             <td th:text="${task.date}" />
@@ -112,8 +112,6 @@
                     table.querySelector(`th:nth-child(${ column + 1})`).classList.toggle("th-sort-asc", asc);
                     table.querySelector(`th:nth-child(${ column + 1})`).classList.toggle("th-sort-desc", !asc);
                 }
-
-                sortByTodoDate(document.querySelector("table"), 3, true);
 
                 document.querySelectorAll(".table-sortable th").forEach(headerCell => {
                     headerCell.addEventListener("click", () => {

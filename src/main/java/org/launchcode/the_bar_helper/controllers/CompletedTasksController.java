@@ -35,7 +35,7 @@ public class CompletedTasksController {
         if (errors.hasErrors()) {
             model.addAttribute("completedTasks", completedTasks);
             model.addAttribute("errors", errors);
-            return "redirect:add";
+            return "tasks/add-completed";
         } else {
             completedTasksRepository.save(completedTasks);
         }
@@ -44,7 +44,7 @@ public class CompletedTasksController {
 
     @GetMapping("list")
     public String displayListCompletedTasksPage(Model model) {
-        model.addAttribute("title", "Completed Tasks");
+        model.addAttribute("title", "Completed Tasks List");
         model.addAttribute("completedTasksList", completedTasksRepository.findAll());
         model.addAttribute("employeesRepository", employeesRepository.findAll());
         return "tasks/list-completed";
@@ -52,7 +52,7 @@ public class CompletedTasksController {
 
     @GetMapping("delete")
     public String displayDeleteCompletedTasksPage(Model model) {
-        model.addAttribute("title", "Remove Completed Task");
+        model.addAttribute("title", "Delete Completed Task");
         model.addAttribute("completedTasksList", completedTasksRepository.findAll());
         model.addAttribute("employeesRepository", employeesRepository.findAll());
         return "tasks/delete-completed";

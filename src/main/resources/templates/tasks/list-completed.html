@@ -61,10 +61,10 @@
         </thead>
         <tbody>
         <tr th:each="task : ${completedTasksList}">
-            <td th:text="${task.completeTaskType.taskTypeDisplayName}" />
-            <td th:text="${task.name}" />
-            <td th:text="${task.notes}" />
-            <td th:text="${task.date}" />
+            <td th:text="${task.completedTaskType.taskTypeDisplayName}" />
+            <td th:text="${task.completedTaskName}" />
+            <td th:text="${task.completedTaskNotes}" />
+            <td th:text="${task.dateCompleted}" />
             <td th:text="${task.employeeNames}" />
         </tr>
         </tbody>
@@ -74,12 +74,6 @@
     <p><a href="/tasks">Task Manager</a></p>
     <p><a href="/">Home</a></p>
     <script>
-
-                function sortEmployeesNames() {
-                  let input = getEmployeeFirstName + getEmployeeLastName;
-                  return input;
-                }
-
                 function sortByCompletedTaskType() {
                   let input, filter, table, tr, td, i;
                   input = document.getElementById("completed-type-list");
@@ -121,7 +115,7 @@
                     table.querySelector(`th:nth-child(${ column + 1})`).classList.toggle("th-sort-desc", !asc);
                 }
 
-                sortByCompletedDate(document.querySelector("table"), 3, true);
+                // sortByCompletedDate(document.querySelector("table"), 3, true);
 
                 document.querySelectorAll(".table-sortable th").forEach(headerCell => {
                     headerCell.addEventListener("click", () => {
