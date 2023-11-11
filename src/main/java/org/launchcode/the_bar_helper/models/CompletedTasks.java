@@ -1,7 +1,9 @@
 package org.launchcode.the_bar_helper.models;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.ManyToOne;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 @Entity
@@ -14,14 +16,15 @@ public class CompletedTasks extends AbstractEntity {
     private String completedTaskNotes;
     private String completedTaskDate;
     private TaskType completedTaskType;
-
-    private String employeeNames;
+    @ManyToOne
+    @NotNull(message = "Employee is required.")
+    private Employees employeeNames;
 
     public CompletedTasks() {
 
     }
 
-    public CompletedTasks(String completedTaskName, String completedTaskNotes, String completedTaskDate, TaskType completedTaskType, String employeeNames) {
+    public CompletedTasks(String completedTaskName, String completedTaskNotes, String completedTaskDate, TaskType completedTaskType, Employees employeeNames) {
         this.completedTaskName = completedTaskName;
         this.completedTaskNotes = completedTaskNotes;
         this.completedTaskDate = completedTaskDate;
@@ -61,11 +64,11 @@ public class CompletedTasks extends AbstractEntity {
         this.completedTaskType = completedTaskType;
     }
 
-    public String getEmployeeNames() {
+    public Employees getEmployeeNames() {
         return employeeNames;
     }
 
-    public void setEmployeeNames(String employeeNames) {
+    public void setEmployeeNames(Employees employeeNames) {
         this.employeeNames = employeeNames;
     }
 

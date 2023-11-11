@@ -65,7 +65,7 @@
             <td th:text="${task.completedTaskName}" />
             <td th:text="${task.completedTaskNotes}" />
             <td th:text="${task.completedTaskDate}" />
-            <td th:text="${task.employeeNames}" />
+            <td th:text="${task.employeeNames.employeeFirstName + ' ' + task.employeeNames.employeeLastName}" />
         </tr>
         </tbody>
     </table>
