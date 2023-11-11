@@ -14,7 +14,7 @@
     <form action="/tasks/completed/add" method="POST">
         <div>
             <label>Type:
-                <select th:field="${completedTasks.completeTaskType}">
+                <select th:field="${completedTasks.completedTaskType}">
                     <option th:each="type : ${completedTaskTypes}"
                             th:value="${type}"
                             th:text="${type.taskTypeDisplayName}"
@@ -24,19 +24,19 @@
         </div>
         <div>
             <label>Task:
-                <input th:field="${completedTasks.name}" />
+                <input th:field="${completedTasks.completedTaskName}" />
             </label>
-            <p class="error" th:errors="${completedTasks.name}"></p>
+            <p class="error" th:errors="${completedTasks.completedTaskName}"></p>
         </div>
         <div>
             <label>Notes:
-                <textarea th:field="${completedTasks.notes}" />
+                <textarea th:field="${completedTasks.completedTaskNotes}" />
             </label>
-            <p class="error" th:errors="${completedTasks.notes}"></p>
+            <p class="error" th:errors="${completedTasks.completedTaskNotes}"></p>
         </div>
         <div>
             <label>Date Completed:
-                <input type="date" id="date" name="date">
+                <input type="date" id="date-completed" name="completedTaskDate">
             </label>
         </div>
         <div>

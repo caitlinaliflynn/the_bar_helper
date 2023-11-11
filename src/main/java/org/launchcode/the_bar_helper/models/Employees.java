@@ -31,8 +31,7 @@ public class Employees {
 
     }
 
-    public Employees(int employeeId, String employeeFirstName, String employeeLastName, Position employeePosition, String dateOfBirth) {
-        this.employeeId = employeeId;
+    public Employees(String employeeFirstName, String employeeLastName, Position employeePosition, String dateOfBirth) {
         this.employeeFirstName = employeeFirstName;
         this.employeeLastName = employeeLastName;
         this.employeePosition = employeePosition;
@@ -41,10 +40,6 @@ public class Employees {
 
     public int getEmployeeId() {
         return employeeId;
-    }
-
-    public void setEmployeeId(int employeeId) {
-        this.employeeId = employeeId;
     }
 
     public String getEmployeeFirstName() {

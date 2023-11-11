@@ -61,9 +61,9 @@
         <tbody>
         <tr th:each="task : ${todoTasksList}">
             <td th:text="${task.todoTaskType.taskTypeDisplayName}" />
-            <td th:text="${task.name}" />
-            <td th:text="${task.notes}" />
-            <td th:text="${task.date}" />
+            <td th:text="${task.todoTaskName}" />
+            <td th:text="${task.todoTaskNotes}" />
+            <td th:text="${task.todoTaskDate}" />
         </tr>
         </tbody>
     </table>

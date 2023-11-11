@@ -18,7 +18,7 @@
         <th:block th:each="task : ${todoTasksList}">
             <label>
                 <input type="checkbox" name="todoTaskIds" th:value="${task.id}" />
-                <span th:text="${task.todoTaskType.taskTypeDisplayName + ' | ' + task.name + ' | ' + task.date}"></span>
+                <span th:text="${task.todoTaskType.taskTypeDisplayName + ' | ' + task.todoTaskName + ' | ' + task.todoTaskDate}"></span>
             </label><br/>
         </th:block>
         <button class="button button1" style="border-radius: 30px;" type="submit">Remove To Do Task(s)</button>
