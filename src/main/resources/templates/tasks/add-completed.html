@@ -44,7 +44,7 @@
                 <select th:field="${completedTasks.employeeNames}">
                     <option th:each="employee : ${employeesRepository}"
                             th:value="${employee.id}"
-                            th:text="${employee.employeeFirstName + ' ' + employee.employeeLastName}"
+                            th:text="${employee}"
                     ></option>
                 </select>
             </label>

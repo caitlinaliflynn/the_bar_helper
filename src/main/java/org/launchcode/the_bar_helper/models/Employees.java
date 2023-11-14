@@ -66,12 +66,7 @@ public class Employees extends AbstractEntity {
 
     @Override
     public String toString() {
-        return "Employees{" +
-                ", employeeFirstName='" + employeeFirstName + '\'' +
-                ", employeeLastName='" + employeeLastName + '\'' +
-                ", position=" + employeePosition +
-                ", dateOfBirth='" + dateOfBirth + '\'' +
-                '}';
+        return employeeFirstName + ' ' + employeeLastName;
     }
 
 }
