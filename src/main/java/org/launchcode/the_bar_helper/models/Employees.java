@@ -1,13 +1,16 @@
 package org.launchcode.the_bar_helper.models;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 @Entity
 public class Employees extends AbstractEntity {
@@ -20,9 +23,10 @@ public class Employees extends AbstractEntity {
     @Size(min = 0, max = 25, message = "Last name must be 50 characters or less.")
     private String employeeLastName;
 
-    private Position employeePosition;
-
-    private String dateOfBirth;
+    @OneToOne(cascade = CascadeType.ALL)
+    @Valid
+    @NotNull
+    private EmployeeInformation employeeInformation;
 
     @OneToMany(mappedBy = "employeeNames")
     private final List<CompletedTasks> completedTasks = new ArrayList<>();
@@ -31,11 +35,9 @@ public class Employees extends AbstractEntity {
 
     }
 
-    public Employees(String employeeFirstName, String employeeLastName, Position employeePosition, String dateOfBirth) {
+    public Employees(String employeeFirstName, String employeeLastName) {
         this.employeeFirstName = employeeFirstName;
         this.employeeLastName = employeeLastName;
-        this.employeePosition = employeePosition;
-        this.dateOfBirth = dateOfBirth;
     }
 
     public String getEmployeeFirstName() {
@@ -54,20 +56,12 @@ public class Employees extends AbstractEntity {
         this.employeeLastName = employeeLastName;
     }
 
-    public Position getEmployeePosition() {
-        return employeePosition;
+    public EmployeeInformation getEmployeeInformation() {
+        return employeeInformation;
     }
 
-    public void setEmployeePosition(Position employeePosition) {
-        this.employeePosition = employeePosition;
-    }
-
-    public String getDateOfBirth() {
-        return dateOfBirth;
-    }
-
-    public void setDateOfBirth(String dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
+    public void setEmployeeInformation(EmployeeInformation employeeInformation) {
+        this.employeeInformation = employeeInformation;
     }
 
     public List<CompletedTasks> getCompletedTasks() {

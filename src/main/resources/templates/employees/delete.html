@@ -18,7 +18,7 @@
         <th:block th:each="employee : ${employeeList}">
             <label>
                 <input type="checkbox" name="employeeIds" th:value="${employee.id}" />
-                <span th:text="${employee.employeePosition.positionDisplayName + ' | ' + employee.id + ' | ' + employee.employeeFirstName + ' | ' + employee.employeeLastName + ' | ' + employee.dateOfBirth}"></span>
+                <span th:text="${employee.employeeInformation.employeePosition.positionDisplayName + ' | ' + employee.id + ' | ' + employee.employeeFirstName + ' | ' + employee.employeeLastName + ' | ' + employee.employeeInformation.dateOfBirth}"></span>
             </label><br/>
         </th:block>
         <button class="button button1" style="border-radius: 30px;" type="submit">Remove Employee(s)</button>

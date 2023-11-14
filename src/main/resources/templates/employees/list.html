@@ -44,11 +44,11 @@
         </thead>
         <tbody>
         <tr th:each="employee : ${employeeList}">
-            <td th:text="${employee.employeePosition.positionDisplayName}" />
+            <td th:text="${employee.employeeInformation.employeePosition.positionDisplayName}" />
             <td th:text="${employee.id}" />
             <td th:text="${employee.employeeFirstName}" />
             <td th:text="${employee.employeeLastName}" />
-            <td th:text="${employee.dateOfBirth}" />
+            <td th:text="${employee.employeeInformation.dateOfBirth}" />
         </tr>
         </tbody>
     </table>

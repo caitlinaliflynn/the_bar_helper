@@ -26,12 +26,12 @@
         </div>
         <div>
             <label>Date Of Birth:
-                <input type="date" id="dateOfBirth" name="dateOfBirth">
+                <input th:field="${employees.employeeInformation.dateOfBirth}" type="date" id="dateOfBirth" name="dateOfBirth">
             </label>
         </div>
         <div>
             <label>Position:
-                <select th:field="${employees.employeePosition}">
+                <select th:field="${employees.employeeInformation.employeePosition}">
                     <option th:each="employee : ${positionType}"
                             th:value="${employee}"
                             th:text="${employee.positionDisplayName}"
