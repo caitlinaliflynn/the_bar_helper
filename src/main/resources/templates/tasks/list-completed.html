@@ -65,12 +65,13 @@
             <td th:text="${task.completedTaskName}" />
             <td th:text="${task.completedTaskNotes}" />
             <td th:text="${task.completedTaskDate}" />
-            <td th:text="${task.employeeNames.employeeFirstName + ' ' + task.employeeNames.employeeLastName}" />
+            <td><a th:text="${task.employeeNames.employeeFirstName + ' ' + task.employeeNames.employeeLastName}" th:href="'list?employeeId=' + ${task.employeeNames.id}"></a> </td>
         </tr>
         </tbody>
     </table>
     <p><a href="/tasks/completed/add">Add Completed Task</a></p>
     <p><a href="/tasks/completed/delete">Remove Completed Task</a></p>
+    <p><a href="/tasks/completed/list">All Completed Tasks</a></p>
     <p><a href="/tasks">Task Manager</a></p>
     <p><a href="/">Home</a></p>
     <script>

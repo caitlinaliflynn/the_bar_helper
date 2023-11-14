@@ -1,9 +1,12 @@
 package org.launchcode.the_bar_helper.models;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -20,6 +23,9 @@ public class Employees extends AbstractEntity {
     private Position employeePosition;
 
     private String dateOfBirth;
+
+    @OneToMany(mappedBy = "employeeNames")
+    private final List<CompletedTasks> completedTasks = new ArrayList<>();
 
     public Employees() {
 
@@ -62,6 +68,10 @@ public class Employees extends AbstractEntity {
 
     public void setDateOfBirth(String dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
+    }
+
+    public List<CompletedTasks> getCompletedTasks() {
+        return completedTasks;
     }
 
     @Override

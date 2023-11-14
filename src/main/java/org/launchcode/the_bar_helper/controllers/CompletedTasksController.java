@@ -4,12 +4,15 @@ import jakarta.validation.Valid;
 import org.launchcode.the_bar_helper.data.CompletedTasksRepository;
 import org.launchcode.the_bar_helper.data.EmployeesRepository;
 import org.launchcode.the_bar_helper.models.CompletedTasks;
+import org.launchcode.the_bar_helper.models.Employees;
 import org.launchcode.the_bar_helper.models.TaskType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Optional;
 
 @Controller
 @RequestMapping("tasks/completed")
@@ -43,10 +46,23 @@ public class CompletedTasksController {
     }
 
     @GetMapping("list")
-    public String displayListCompletedTasksPage(Model model) {
-        model.addAttribute("title", "Completed Tasks List");
-        model.addAttribute("completedTasksList", completedTasksRepository.findAll());
-        model.addAttribute("employeesRepository", employeesRepository.findAll());
+    public String displayListCompletedTasksPage(@RequestParam(required = false) Integer employeeId, Model model) {
+
+        if (employeeId == null) {
+            model.addAttribute("title", "Completed Tasks List");
+            model.addAttribute("completedTasksList", completedTasksRepository.findAll());
+            model.addAttribute("employeesRepository", employeesRepository.findAll());
+        } else {
+            Optional<Employees> result = employeesRepository.findById(employeeId);
+            if (result.isEmpty()) {
+                model.addAttribute("title", "Invalid Employee Id: " + employeeId);
+            } else {
+                Employees employees = result.get();
+                model.addAttribute("title", "Completed Tasks for " + employees.getEmployeeFirstName() + " " + employees.getEmployeeLastName());
+                model.addAttribute("completedTasksList", employees.getCompletedTasks());
+            }
+        }
+
         return "tasks/list-completed";
     }
 
