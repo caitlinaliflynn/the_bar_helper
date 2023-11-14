@@ -1,19 +1,13 @@
 package org.launchcode.the_bar_helper.models;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
 import java.util.Objects;
 
 @Entity
-public class Employees {
-
-    @Id
-    @GeneratedValue
-    private int employeeId;
+public class Employees extends AbstractEntity {
 
     @NotBlank(message = "First name is required.")
     @Size(min = 0, max = 25, message = "First name must be 50 characters or less.")
@@ -36,10 +30,6 @@ public class Employees {
         this.employeeLastName = employeeLastName;
         this.employeePosition = employeePosition;
         this.dateOfBirth = dateOfBirth;
-    }
-
-    public int getEmployeeId() {
-        return employeeId;
     }
 
     public String getEmployeeFirstName() {
@@ -77,7 +67,6 @@ public class Employees {
     @Override
     public String toString() {
         return "Employees{" +
-                "employeeId=" + employeeId +
                 ", employeeFirstName='" + employeeFirstName + '\'' +
                 ", employeeLastName='" + employeeLastName + '\'' +
                 ", position=" + employeePosition +
@@ -85,15 +74,4 @@ public class Employees {
                 '}';
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Employees employees)) return false;
-        return getEmployeeId() == employees.getEmployeeId() && Objects.equals(getEmployeeFirstName(), employees.getEmployeeFirstName()) && Objects.equals(getEmployeeLastName(), employees.getEmployeeLastName()) && getEmployeePosition() == employees.getEmployeePosition() && Objects.equals(getDateOfBirth(), employees.getDateOfBirth());
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(getEmployeeId(), getEmployeeFirstName(), getEmployeeLastName(), getEmployeePosition(), getDateOfBirth());
-    }
 }
