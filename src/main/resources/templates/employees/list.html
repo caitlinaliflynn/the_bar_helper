@@ -40,6 +40,8 @@
             <th>First Name</th>
             <th>Last Name</th>
             <th id="date-of-birth">Date Of Birth</th>
+            <th>Phone Number</th>
+            <th>Address</th>
         </tr>
         </thead>
         <tbody>
@@ -49,6 +51,8 @@
             <td th:text="${employee.employeeFirstName}" />
             <td th:text="${employee.employeeLastName}" />
             <td th:text="${employee.employeeInformation.dateOfBirth}" />
+            <td th:text="${employee.employeeInformation.phoneNumber}" />
+            <td th:text="${employee.employeeInformation.address}" />
         </tr>
         </tbody>
     </table>

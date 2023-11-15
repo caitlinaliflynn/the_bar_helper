@@ -39,6 +39,16 @@
                 </select>
             </label>
         </div>
+        <div>
+            <label>Phone Number:
+                <input th:field="${employees.employeeInformation.phoneNumber}" type="tel" id="phoneNumber" name="dateOfBirth">
+            </label>
+        </div>
+        <div>
+            <label>Address:
+                <input th:field="${employees.employeeInformation.address}" type="text" id="address" name="dateOfBirth">
+            </label>
+        </div>
         <button class="button button1" style="border-radius: 30px;" type="submit">Add New Employee</button>
     </form>
     </br>
