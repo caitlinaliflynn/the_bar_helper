@@ -10,6 +10,9 @@ public class EmployeeInformation extends AbstractEntity {
 
     private String dateOfBirth;
 
+    @OneToOne(mappedBy = "employeeInformation")
+    private Employees employees;
+
     public EmployeeInformation(Position employeePosition, String dateOfBirth) {
         this.employeePosition = employeePosition;
         this.dateOfBirth = dateOfBirth;
