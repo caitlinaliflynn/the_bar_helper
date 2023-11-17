@@ -2,6 +2,7 @@ package org.launchcode.the_bar_helper.controllers;
 
 import jakarta.validation.Valid;
 import org.launchcode.the_bar_helper.data.CompletedTasksRepository;
+import org.launchcode.the_bar_helper.data.EmployeeInformationRepository;
 import org.launchcode.the_bar_helper.data.EmployeesRepository;
 import org.launchcode.the_bar_helper.models.CompletedTasks;
 import org.launchcode.the_bar_helper.models.Employees;
@@ -24,12 +25,16 @@ public class CompletedTasksController {
     @Autowired
     private EmployeesRepository employeesRepository;
 
+    @Autowired
+    private EmployeeInformationRepository employeeInformationRepository;
+
     @GetMapping("add")
     public String displayAddCompletedTasksPage(Model model) {
         model.addAttribute("title", "Add Completed Task");
         model.addAttribute(new CompletedTasks());
         model.addAttribute("completedTaskTypes", TaskType.values());
         model.addAttribute("employeesRepository", employeesRepository.findAll());
+        model.addAttribute("employeesInformationRepository", employeeInformationRepository.findAll());
         return "tasks/add-completed";
     }
 

@@ -1,9 +1,10 @@
 package org.launchcode.the_bar_helper.controllers;
 
 import jakarta.validation.Valid;
+import org.launchcode.the_bar_helper.data.EmployeeInformationRepository;
 import org.launchcode.the_bar_helper.data.EmployeesRepository;
+import org.launchcode.the_bar_helper.data.PositionRepository;
 import org.launchcode.the_bar_helper.models.Employees;
-import org.launchcode.the_bar_helper.models.Position;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,10 +18,16 @@ public class EmployeesController {
     @Autowired
     private EmployeesRepository employeesRepository;
 
+    @Autowired
+    private PositionRepository positionRepository;
+
+    @Autowired
+    private EmployeeInformationRepository employeeInformationRepository;
+
     @GetMapping("add")
     public String displayAddEmployeePage(Model model) {
         model.addAttribute("title", "Add Employee");
-        model.addAttribute("positionType", Position.values());
+        model.addAttribute("positionType", positionRepository.findAll());
         model.addAttribute(new Employees());
         return "employees/add";
     }
@@ -40,6 +47,8 @@ public class EmployeesController {
     public String displayListEmployeePage(Model model) {
         model.addAttribute("title", "Employees");
         model.addAttribute("employeeList", employeesRepository.findAll());
+        model.addAttribute("positionType", positionRepository.findAll());
+        model.addAttribute("employeeInformationRepository", employeeInformationRepository);
         return "employees/list";
     }
 

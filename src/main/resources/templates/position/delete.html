@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<div th:replace="fragments :: head"></div>
+<head>
+    <style>
+        .button1:hover {
+        background-color: #41B3A3;
+        color: black;
+        }
+    </style>
+</head>
+<body>
+<header th:replace="fragments :: header"></header>
+<p th:unless="${positionList} and ${positionList.size()}">
+    You have not added any positions yet!
+</p>
+<form action="/position/delete" method="POST">
+    <th:block th:each="position : ${positionList}">
+        <label>
+            <input type="checkbox" name="positionIds" th:value="${position.id}" />
+            <span th:text="${position.name}"></span>
+        </label><br/>
+    </th:block>
+    <button class="button button1" style="border-radius: 30px;" type="submit">Remove Position(s)</button>
+</form>
+<p><a href="/position/add">Add Position</a></p>
+<p><a href="/position/list">Position List</a></p>
+<p><a href="/">Home</a></p>
+</body>
+</html>

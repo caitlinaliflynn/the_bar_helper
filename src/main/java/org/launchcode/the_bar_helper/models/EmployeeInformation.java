@@ -1,11 +1,15 @@
 package org.launchcode.the_bar_helper.models;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 public class EmployeeInformation extends AbstractEntity {
 
+    @ManyToOne
+    @NotNull(message = "Position is required.")
     private Position employeePosition;
 
     private String dateOfBirth;

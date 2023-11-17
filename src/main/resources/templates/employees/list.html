@@ -26,16 +26,7 @@
     <table id="employee-table" class="table table-sortable">
         <thead>
         <tr>
-            <th>Position
-                <select id="position-list" onchange="sortByEmployeePosition()" class='form-control'>
-                    <option value="">All</option>                    <option>General Manager</option>
-                    <option>Assistant Manager</option>
-                    <option>Bartender</option>
-                    <option>Server</option>
-                    <option>Bar Back</option>
-                    <option>Cook</option>
-                </select>
-            </th>
+            <th>Position</th>
             <th>Employee ID</th>
             <th>First Name</th>
             <th>Last Name</th>
@@ -46,7 +37,7 @@
         </thead>
         <tbody>
         <tr th:each="employee : ${employeeList}">
-            <td th:text="${employee.employeeInformation.employeePosition.positionDisplayName}" />
+            <td th:text="${employee.employeeInformation.employeePosition.name}" />
             <td th:text="${employee.id}" />
             <td th:text="${employee.employeeFirstName}" />
             <td th:text="${employee.employeeLastName}" />

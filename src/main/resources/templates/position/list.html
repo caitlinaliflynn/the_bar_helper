@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<div th:replace="fragments :: head"></div>
+<head>
+    <style>
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+    th, td {
+      padding: 8px;
+      text-align: left;
+      border-bottom: 1px solid #DDD;
+    }
+    tr {
+      border-bottom: 1px solid #ddd;
+    }
+    tr:hover {background-color: #41B3A3;}
+    </style>
+</head>
+<body>
+<header th:replace="fragments :: header"></header>
+<p th:unless="${positionList} and ${positionList.size()}">
+    You have not added any employees yet!
+</p>
+<table id="position-table" class="table table-sortable">
+    <thead>
+    <tr>
+        <th>Positions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="position : ${positionList}">
+        <td th:text="${position.name}" />
+    </tr>
+    </tbody>
+</table>
+<p><a href="/position/add">Add Position</a></p>
+<p><a href="/position/delete">Remove Position</a></p>
+<p><a href="/">Home</a></p>
+</body>
+</html>

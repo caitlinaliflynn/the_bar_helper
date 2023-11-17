@@ -32,9 +32,9 @@
         <div>
             <label>Position:
                 <select th:field="${employees.employeeInformation.employeePosition}">
-                    <option th:each="employee : ${positionType}"
-                            th:value="${employee}"
-                            th:text="${employee.positionDisplayName}"
+                    <option th:each="position : ${positionType}"
+                            th:value="${position.id}"
+                            th:text="${position.name}"
                     ></option>
                 </select>
             </label>

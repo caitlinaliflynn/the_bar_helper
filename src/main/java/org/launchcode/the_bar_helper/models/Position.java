@@ -1,21 +1,43 @@
 package org.launchcode.the_bar_helper.models;
 
-public enum Position {
+import jakarta.persistence.Entity;
+import jakarta.persistence.OneToMany;
+import jakarta.validation.constraints.Size;
 
-    GENERAL_MANAGER("General Manager"),
-    ASSISTANT_MANAGER("Assistant Manager"),
-    BARTENDER("Bartender"),
-    SERVER("Server"),
-    BAR_BACK("Bar Back"),
-    COOK("Cook");
+import java.util.ArrayList;
+import java.util.List;
 
-    private final String positionDisplayName;
+@Entity
+public class Position extends AbstractEntity {
 
-    Position(String positionDisplayName) {
-        this.positionDisplayName = positionDisplayName;
+    @Size(min = 3, message = "Position must be at least 3 characters long.")
+    private String name;
+
+    @OneToMany(mappedBy = "employeePosition")
+    private final List<EmployeeInformation> employeeInformationList = new ArrayList<>();
+
+    public Position(String name) {
+        this.name = name;
     }
 
-    public String getPositionDisplayName() {
-        return positionDisplayName;
+    public Position() {
+
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public List<EmployeeInformation> getEmployeeInformationList() {
+        return employeeInformationList;
+    }
+
+    @Override
+    public String toString() {
+        return name;
     }
 }
