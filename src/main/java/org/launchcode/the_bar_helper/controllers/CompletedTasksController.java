@@ -13,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -39,15 +40,23 @@ public class CompletedTasksController {
     }
 
     @PostMapping("add")
-    public String processAddCompletedTasksPage(@ModelAttribute @Valid CompletedTasks completedTasks, Errors errors, Model model) {
+    public String processAddCompletedTasksPage(@ModelAttribute @Valid CompletedTasks completedTasks,
+                                               Errors errors,
+                                               @RequestParam(required = false) List<Integer> employeeIds,
+                                               Model model) {
         if (errors.hasErrors()) {
             model.addAttribute("completedTasks", completedTasks);
+            model.addAttribute("employeesRepository", employeesRepository.findAll());
             model.addAttribute("errors", errors);
             return "tasks/add-completed";
         } else {
+            if (employeeIds != null) {
+                List<Employees> selectedEmployees = (List<Employees>) employeesRepository.findAllById(employeeIds);
+                completedTasks.setEmployeeNames(selectedEmployees);
+            }
             completedTasksRepository.save(completedTasks);
+            return  "redirect:list";
         }
-        return  "redirect:list";
     }
 
     @GetMapping("list")

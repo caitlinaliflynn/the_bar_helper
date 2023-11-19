@@ -1,10 +1,14 @@
 package org.launchcode.the_bar_helper.models;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
+
+import java.util.List;
 
 @Entity
 public class CompletedTasks extends AbstractEntity {
@@ -16,15 +20,15 @@ public class CompletedTasks extends AbstractEntity {
     private String completedTaskNotes;
     private String completedTaskDate;
     private TaskType completedTaskType;
-    @ManyToOne
-    @NotNull(message = "Employee is required.")
-    private Employees employeeNames;
+    @ManyToMany
+    @Valid
+    private List<Employees> employeeNames;
 
     public CompletedTasks() {
 
     }
 
-    public CompletedTasks(String completedTaskName, String completedTaskNotes, String completedTaskDate, TaskType completedTaskType, Employees employeeNames) {
+    public CompletedTasks(String completedTaskName, String completedTaskNotes, String completedTaskDate, TaskType completedTaskType, List<Employees> employeeNames) {
         this.completedTaskName = completedTaskName;
         this.completedTaskNotes = completedTaskNotes;
         this.completedTaskDate = completedTaskDate;
@@ -64,11 +68,11 @@ public class CompletedTasks extends AbstractEntity {
         this.completedTaskType = completedTaskType;
     }
 
-    public Employees getEmployeeNames() {
+    public List<Employees> getEmployeeNames() {
         return employeeNames;
     }
 
-    public void setEmployeeNames(Employees employeeNames) {
+    public void setEmployeeNames(List<Employees> employeeNames) {
         this.employeeNames = employeeNames;
     }
 
@@ -81,6 +85,17 @@ public class CompletedTasks extends AbstractEntity {
                 ", completedTaskType=" + completedTaskType +
                 ", employeeNames='" + employeeNames + '\'' +
                 '}';
+    }
+
+    public String getFormattedEmployees() {
+        StringBuilder employeeNamesStringBuilder = new StringBuilder("");
+        for (int i = 0; i < employeeNames.size(); i++) {
+            employeeNamesStringBuilder.append(employeeNames.get(i));
+            if (i < employeeNames.size() - 1) {
+                employeeNamesStringBuilder.append(", ");
+            }
+        }
+        return employeeNamesStringBuilder.toString();
     }
 
 }

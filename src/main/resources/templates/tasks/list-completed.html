@@ -56,7 +56,7 @@
             <th>Task</th>
             <th>Notes</th>
             <th id="date-completed">Date Completed</th>
-            <th>Employee Completed By:</th>
+            <th>Employee(s) Completed By:</th>
         </tr>
         </thead>
         <tbody>
@@ -65,7 +65,7 @@
             <td th:text="${task.completedTaskName}" />
             <td th:text="${task.completedTaskNotes}" />
             <td th:text="${task.completedTaskDate}" />
-            <td><a th:text="${task.employeeNames.employeeFirstName + ' ' + task.employeeNames.employeeLastName}" th:href="'list?employeeId=' + ${task.employeeNames.id}"></a> </td>
+            <td th:text="${task.getFormattedEmployees()}" />
         </tr>
         </tbody>
     </table>

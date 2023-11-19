@@ -1,9 +1,6 @@
 package org.launchcode.the_bar_helper.models;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.*;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -25,10 +22,9 @@ public class Employees extends AbstractEntity {
 
     @OneToOne(cascade = CascadeType.ALL)
     @Valid
-    @NotNull
     private EmployeeInformation employeeInformation;
 
-    @OneToMany(mappedBy = "employeeNames")
+    @ManyToMany(mappedBy = "employeeNames")
     private final List<CompletedTasks> completedTasks = new ArrayList<>();
 
     public Employees() {

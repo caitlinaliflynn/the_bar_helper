@@ -40,13 +40,13 @@
             </label>
         </div>
         <div>
-            <label>Employee Completed By:
-                <select th:field="${completedTasks.employeeNames}">
-                    <option th:each="employee : ${employeesRepository}"
-                            th:value="${employee.id}"
-                            th:text="${employee}"
-                    ></option>
-                </select>
+            <label>Employee(s) Completed By:
+                <th:block th:each="employee : ${employeesRepository}">
+                    <label>
+                        <input type="checkbox" name="employeeIds" th:value="${employee.id}" />
+                        <span th:text="${employee}"></span>
+                    </label>
+                </th:block>
             </label>
         </div>
         <button class="button button1" style="border-radius: 30px;" type="submit">Add New Completed Task</button>
