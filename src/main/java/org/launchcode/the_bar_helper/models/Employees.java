@@ -22,10 +22,11 @@ public class Employees extends AbstractEntity {
 
     @OneToOne(cascade = CascadeType.ALL)
     @Valid
+    @NotNull
     private EmployeeInformation employeeInformation;
 
     @ManyToMany(mappedBy = "employeeNames")
-    private final List<CompletedTasks> completedTasks = new ArrayList<>();
+    private List<CompletedTasks> completedTasks = new ArrayList<>();
 
     public Employees() {
 

@@ -47,6 +47,7 @@ public class CompletedTasksController {
         if (errors.hasErrors()) {
             model.addAttribute("completedTasks", completedTasks);
             model.addAttribute("employeesRepository", employeesRepository.findAll());
+            model.addAttribute("completedTasks", completedTasksRepository.findAll());
             model.addAttribute("errors", errors);
             return "tasks/add-completed";
         } else {

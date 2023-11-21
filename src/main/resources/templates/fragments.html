@@ -11,6 +11,19 @@
 <body>
     <nav th:fragment="header" id="mainH" >
     <h1 th:text="${title}"></h1>
-</nav>
+    </nav>
+
+    <div class="nav">
+        <span class="bold">Admin Portal</span>
+        <th:block th:unless="${loggedIn}">
+            <a class="navlink" href="login">Login</a>
+            <a class="navlink" href="register">Register</a>
+        </th:block>
+        <th:block th:if="${loggedIn}">
+            <a class="navlink" href="logout">Log Out</a>
+        </th:block>
+
+    </div>
+
 </body>
 </html>
